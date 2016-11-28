@@ -1,0 +1,32 @@
+<h3>All Users</h3>
+<br>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Follow</th>
+		</thead>
+		<tbody>
+			<% @users.try(:each) do |user| %>
+				<tr>
+					<td><%= user.name %></td>
+					<td><%= user.last_name %></td>
+					<td><%= user.email %></td>
+					<td>
+						<% if follow = @user.followings.find_by(following_id: user.id) %>
+							<%= link_to 'Unfollow', follow, method: 'delete', class: "btn btn-danger"  %>
+						<% else %>
+							<%= form_for Follower.new do |new_follower| %>
+								<%= new_follower.hidden_field :following_id, value: user.uuid  %>
+								<%= new_follower.hidden_field :follower_id, value: @user.uuid  %>
+								<%= new_follower.submit 'Follow', class: "btn btn-primary"  %>
+							<% end %> 
+						<% end %>
+					</td>
+				</tr>	
+			<% end %>
+		</tbody>
+	</table>
+</div>

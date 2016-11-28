@@ -1,0 +1,50 @@
+<div class="timeline row card-columns" data-isotope='{ "itemSelector": ".item", "masonry": {"layoutMode": "packery" } }'>
+      <div class="col-xs-12 col-md-6 col-lg-4 item" >
+        <div class="timeline-block">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="media">
+                <div class="media-left">
+                  <a href="">
+                    <%= image_tag gravatar_url( posts.user.email, 50), class: 'media-object' %>
+                  </a>
+                </div>
+                <div class="media-body">
+                  <a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+
+                  <a href=""><%= posts.user.name + " " + posts.user.last_name if posts.user%></a>
+                  <span><%= link_to 'Delete', posts, method: 'delete', data: { confirm: "Are you sure, You want to Delete your comment?" } if posts.user_id == @user.uuid %></span>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="panel-body">
+              <p><%= posts.post_text %></p>
+            </div>
+
+
+
+            <div class="view-all-comments">
+              <%= render 'comments/form', post: posts %>
+              <% if like = posts.likes.find_by(user_id: current_user.uuid) %>
+                  <%= link_to 'Unlike', like, method: 'delete',class: "btn btn-primary"  %>
+              <% else %>
+                  <%= link_to 'Like', likes_path({post_id: posts.uuid}), method: 'post',class: "btn btn-primary"  %>
+              <% end %>
+              <h6>Comments:</h6><br>
+              <ul>
+                <% posts.comments.to_a.each do |cmnt| %>
+                    <li><%= "#{cmnt.comment}" %> <br>
+                      <span class="disabled-text"> <%= User.find(cmnt.user_id).full_name %></span> | <%= link_to 'Delete', cmnt, method: 'delete', data: { confirm: "Are you sure, You want to Delete your comment?" } if cmnt.user_id == @user.uuid %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+</div>

@@ -41,6 +41,11 @@ class User
      property :current_sign_in_ip, type:  String
      property :last_sign_in_ip, type: String
 
+     ## Profile Info
+     property :name, type: String
+     property :last_name, type: String
+
+
      ## Confirmable
      # property :confirmation_token
      # index :confirmation_token
@@ -61,9 +66,14 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :in, :posts, origin: :user
 
+  def followings
+    Follower.where(follower_id: self.id)
+  end
 
-
-  has_many :out, :posts, type: :HAS_POST
+  def full_name
+      self.name+' '+self.last_name
+  end
 
 end

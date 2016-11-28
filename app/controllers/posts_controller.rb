@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.posts.to_a
   end
 
   # GET /posts/1
@@ -25,14 +25,10 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    @user = current_user
-    @post.user_id = current_user.uuid
-    #@post.user = current_user
-
+    current_user.posts << @post
     respond_to do |format|
-      if @post.save
-        @user.posts = Post.all.where(:user_id == current_user.uuid)
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+      if @post.save!
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -58,9 +54,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    @post.comments.destroy_all
+    @post.likes.destroy_all
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:post_text)
+      params.require(:post).permit(:post_text, :user_id)
     end
 end

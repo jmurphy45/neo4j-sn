@@ -1,10 +1,11 @@
-<%= render 'posts/form', post: @post %>
+<div class="container">
 
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <p><%= post.post_text %></p>
-      <%= render 'comments/form', comment: @comment %>
-    </li>
-  <% end %>
-</ul>
+			<%= render 'posts/form', post: @post %>
+				<h3>My News Feed</h3>
+			  <% @posts.each do |posts| %>
+					<%= render 'posts/post', posts: posts %>
+		    <% end %>
+
+</div>
+
+

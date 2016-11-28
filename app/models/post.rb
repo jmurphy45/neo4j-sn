@@ -1,10 +1,11 @@
 class Post 
   include Neo4j::ActiveNode
   property :post_text, type: String
-  property :user_id, type: String
 
-
-
-  #has_one :both, :user, type: :BELONGS_TO
-  has_many :out, :comments, type: :POST_HAS_COMMENT
+  # has_one :out, :user
+  has_one :out, :user, type: :user
+  has_many :in, :comments, origin: :post
+  has_many :in, :likes, origin: :post
+  # has_many :out, :comments, type: :POST_HAS_COMMENT
+  # has_many :out, :likes, type: :POST_HAS_LIKE
 end

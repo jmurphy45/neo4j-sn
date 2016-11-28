@@ -1,22 +1,25 @@
-<%= form_for(post) do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="panel panel-default share clearfix-xs">
+  <div class="panel-heading panel-heading-gray title">
+    What´s new
+  </div>
+  <%= form_for(post) do |f| %>
+      <% if post.errors.any? %>
+          <div id="error_explanation">
+            <% post.errors.full_messages.each do |message| %>
+                <%= message %>
+                <h3 id="alert"><%= notice %></h3>
+            <% end %>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <div class="panel-body">
+        <%= f.text_area :post_text, class: 'form-control share-text',placeholder: 'Share your status...' %>
+      </div>
+
+      <div class="panel-footer share-buttons">
+        <a href="#"><i class="fa fa-map-marker"></i></a>
+        <a href="#"><i class="fa fa-photo"></i></a>
+        <a href="#"><i class="fa fa-video-camera"></i></a>
+        <%= f.submit 'Post', class: 'btn btn-primary btn-xs pull-right display-none' %>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :post_text %>
-    <%= f.text_field :post_text %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
