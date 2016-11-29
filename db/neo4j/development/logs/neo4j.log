@@ -1,0 +1,85 @@
+2016-11-17 23:36:22.220+0000 INFO  Starting...
+2016-11-17 23:36:25.836+0000 INFO  Bolt enabled on localhost:7472.
+2016-11-17 23:36:29.935+0000 INFO  Started.
+2016-11-17 23:36:31.764+0000 INFO  Remote interface available at http://localhost:7474/
+2016-11-18 05:30:43.907+0000 INFO  Neo4j Server shutdown initiated by request
+2016-11-18 05:30:44.053+0000 INFO  Stopping...
+2016-11-18 05:30:44.292+0000 INFO  Stopped.
+2016-11-18 05:30:49.690+0000 INFO  Starting...
+2016-11-18 05:30:52.840+0000 INFO  Bolt enabled on localhost:7472.
+2016-11-18 05:31:05.873+0000 INFO  Started.
+2016-11-18 05:31:08.796+0000 INFO  Remote interface available at http://localhost:7474/
+2016-11-21 13:03:08.612+0000 INFO  Starting...
+2016-11-21 13:03:09.623+0000 INFO  Bolt enabled on localhost:7472.
+2016-11-21 13:03:14.022+0000 INFO  Started.
+2016-11-21 13:03:15.486+0000 WARN  FAILED ServerConnector@76101d78{HTTP/1.1}{localhost:7474}: java.net.BindException: Address already in use Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.neo4j.server.web.Jetty9WebServer.startJetty(Jetty9WebServer.java:353)
+	at org.neo4j.server.web.Jetty9WebServer.start(Jetty9WebServer.java:168)
+	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:313)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:206)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:90)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:67)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+2016-11-21 13:03:15.487+0000 WARN  FAILED org.eclipse.jetty.server.Server@167e1e4d: java.net.BindException: Address already in use Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.neo4j.server.web.Jetty9WebServer.startJetty(Jetty9WebServer.java:353)
+	at org.neo4j.server.web.Jetty9WebServer.start(Jetty9WebServer.java:168)
+	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:313)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:206)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:90)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:67)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+2016-11-21 13:03:15.487+0000 ERROR Failed to start Neo4j on localhost:7474: Address localhost:7474 is already in use, cannot bind to it.
+2016-11-21 13:03:15.488+0000 INFO  Stopping...
+2016-11-21 13:03:15.543+0000 INFO  Stopped.
+2016-11-21 13:03:15.546+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Address localhost:7474 is already in use, cannot bind to it. Starting Neo4j failed: Address localhost:7474 is already in use, cannot bind to it.
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Address localhost:7474 is already in use, cannot bind to it.
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:215)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:90)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:67)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7474 is already in use, cannot bind to it.
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.neo4j.server.web.Jetty9WebServer.startJetty(Jetty9WebServer.java:353)
+	at org.neo4j.server.web.Jetty9WebServer.start(Jetty9WebServer.java:168)
+	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:313)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:206)
+	... 3 more
+2016-11-22 16:43:00.964+0000 INFO  Starting...
+2016-11-22 16:43:11.048+0000 INFO  Bolt enabled on localhost:7472.
+2016-11-22 16:44:16.449+0000 INFO  Started.
+2016-11-22 16:44:25.349+0000 INFO  Remote interface available at http://localhost:7474/

@@ -80,7 +80,4 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
-
-  config.neo4j.session_type = :server_db
-  config.neo4j.session_path = ENV["GRAPHENEDB_URL"] || 'http://localhost:7474'
 end
